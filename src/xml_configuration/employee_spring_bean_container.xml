@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+  
+ <beans>
+     <bean id = "student" class = "Model.StudentModel">
+        <property name="first_name" value = "Abhishek"></property>
+        <property name="last_name" value = "Chaudhary"></property>
+        <property name="email" value = "abhishek07456@gmail.com"></property>
+         <property name="age" value = "12"></property>
+     </bean>
+     
+     <bean id = "student_controller" class = "Controller.StudentController" autowire = "byName">
+       <!--  <constructor-arg><ref bean ="student"></ref></constructor-arg>-->
+     </bean>
+     
+      <bean id = "skill1" class ="Model.Skills">
+        <property name="name" value = "Web Application Development"></property>
+      </bean>
+      
+       <bean id = "skill2" class ="Model.Skills">
+        <property name="name" value = "Android Application Development"></property>
+      </bean>
+ </beans>
