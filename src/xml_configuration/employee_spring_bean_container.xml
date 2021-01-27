@@ -9,16 +9,25 @@
         <property name="email" value = "abhishek07456@gmail.com"></property>
          <property name="age" value = "12"></property>
      </bean>
-     
-     <bean id = "student_controller" class = "Controller.StudentController" autowire = "byName">
-       <!--  <constructor-arg><ref bean ="student"></ref></constructor-arg>-->
-     </bean>
-     
-      <bean id = "skill1" class ="Model.Skills">
+     <bean id = "skill" class = "Model.Skills" abstract="true"></bean>
+      <bean id = "skill1" class ="Model.Skills" scope = "singleton">
         <property name="name" value = "Web Application Development"></property>
       </bean>
       
-       <bean id = "skill2" class ="Model.Skills">
+       <bean id = "skill2" class ="Model.Skills" >
         <property name="name" value = "Android Application Development"></property>
       </bean>
+       <bean id = "skill3" class ="Model.Skills" >
+        <property name="name" value = "gaming Application Development"></property>
+      </bean>
+     <bean id = "controller_dependency" abstract = "true">
+         <property name="student" ref="student"/>
+         <property name="skill1" ref="skill1"/>
+         <property name="skill2" ref="skill2"/>
+     </bean>
+     <bean id = "student_controller" class = "Controller.StudentController" parent= "controller_dependency">
+              <property name="skill2" ref="skill3"/>
+     </bean>
+     
+      
  </beans>

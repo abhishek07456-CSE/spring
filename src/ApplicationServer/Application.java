@@ -13,6 +13,7 @@ public class Application {
 		ApplicationContext beanFactory = new ClassPathXmlApplicationContext("./xml_configuration/employee_spring_bean_container.xml");
 		StudentController controller = (StudentController) beanFactory.getBean("student_controller");
 		controller.studentDetails();
+		
 		controller = null;
 		
 		

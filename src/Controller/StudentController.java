@@ -1,14 +1,18 @@
 package Controller;
 
+import org.springframework.beans.factory.BeanNameAware;
+
 import Model.Skills;
 import Model.StudentModel;
 
-public class StudentController {
+public class StudentController implements BeanNameAware{
 	     private StudentModel student;
          private Skills skill1; //auto wire
          private Skills skill2; //auto wire
 
-
+        public StudentController(){
+        	 System.out.println("student Controller intialted");
+        }
 		public void setStudent(StudentModel student) {
 			this.student = student;
 		}
@@ -30,4 +34,9 @@ public class StudentController {
         	 System.out.println("skill 1 "+ skill1.getName());
         	 System.out.println("skill 2 "+ skill2.getName());
          }
+		@Override
+		public void setBeanName(String name) {
+			System.out.println(name);
+			
+		}
 }
