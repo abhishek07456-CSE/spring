@@ -3,7 +3,7 @@ package ApplicationServer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import Controller.StudentController;
+import Controller.PersonController;
 
 public class Application {
 
@@ -11,8 +11,8 @@ public class Application {
 		// TODO Auto-generated method stub
 		@SuppressWarnings("resource")
 		ApplicationContext beanFactory = new ClassPathXmlApplicationContext("./xml_configuration/employee_spring_bean_container.xml");
-		StudentController controller = (StudentController) beanFactory.getBean("student_controller");
-		controller.studentDetails();
+		PersonController controller = (PersonController) beanFactory.getBean("person_controller");
+		controller.personDetails();
 		
 		controller = null;
 		

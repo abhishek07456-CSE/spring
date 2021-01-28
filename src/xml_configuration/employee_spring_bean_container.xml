@@ -7,26 +7,60 @@
         <property name="first_name" value = "Abhishek"></property>
         <property name="last_name" value = "Chaudhary"></property>
         <property name="email" value = "abhishek07456@gmail.com"></property>
-         <property name="age" value = "12"></property>
+        <property name="age" value = "12"></property>
+        <property name = "skills">
+          <list merge = "true">
+                  <ref bean = "student_skill1"></ref>
+                  <ref bean = "student_skill2"></ref>
+                  <ref bean = "student_skill3"></ref>
+          </list>
+        </property>
      </bean>
-     <bean id = "skill" class = "Model.Skills" abstract="true"></bean>
-      <bean id = "skill1" class ="Model.Skills" scope = "singleton">
+      <bean id = "student_skill1" class ="Model.Skills" scope = "singleton">
         <property name="name" value = "Web Application Development"></property>
       </bean>
       
-       <bean id = "skill2" class ="Model.Skills" >
+       <bean id = "student_skill2" class ="Model.Skills" >
         <property name="name" value = "Android Application Development"></property>
       </bean>
-       <bean id = "skill3" class ="Model.Skills" >
+       <bean id = "student_skill3" class ="Model.Skills" >
         <property name="name" value = "gaming Application Development"></property>
       </bean>
-     <bean id = "controller_dependency" abstract = "true">
-         <property name="student" ref="student"/>
-         <property name="skill1" ref="skill1"/>
-         <property name="skill2" ref="skill2"/>
+      
+      
+      
+     <bean id = "teacher" class = "Model.TeacherModel">
+        <property name="first_name" value = "Sunil"></property>
+        <property name="last_name" value = "Kumar"></property>
+        <property name="email" value = "sunil6@teacher.com"></property>
+        <property name="age" value = "12"></property>
+        <property name = "skills">
+          <list merge = "true">
+                  <ref bean = "teacher_skill1"></ref>
+                  <ref bean = "teacher_skill2"></ref>
+                  <ref bean = "teacher_skill3"></ref>
+          </list>
+        </property>
      </bean>
-     <bean id = "student_controller" class = "Controller.StudentController" parent= "controller_dependency">
-              <property name="skill2" ref="skill3"/>
+     
+      <bean id = "teacher_skill1" class ="Model.Skills">
+        <property name="name" value = "accountant"></property>
+      </bean>
+      
+      <bean id = "teacher_skill2" class ="Model.Skills" >
+        <property name="name" value = "Teaching"></property>
+      </bean>
+       <bean id = "teacher_skill3" class ="Model.Skills" >
+        <property name="name" value = "Mathematics"></property>
+      </bean>
+      
+      
+     <bean id = "controller_dependency" abstract = "true">
+         <property name="person" ref="student"/> <!-- send ref of student and teacher no need to change in code  new Tecaher or new Student() -->
+     </bean>
+     
+     
+     <bean id = "person_controller" class = "Controller.PersonController"  parent = "controller_dependency">
      </bean>
      
       
