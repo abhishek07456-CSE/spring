@@ -2,6 +2,7 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
         "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
   
+<!-- <beans default-init-method = "init" default-destroy-method = "destroy"> -->
  <beans>
      <bean id = "student" class = "Model.StudentModel">
         <property name="first_name" value = "Abhishek"></property>
@@ -17,19 +18,19 @@
         </property>
      </bean>
       <bean id = "student_skill1" class ="Model.Skills" scope = "singleton">
-        <property name="name" value = "Web Application Development"></property>
+        <property name="name" value = "${studentSkill.skill1}"></property>
       </bean>
       
        <bean id = "student_skill2" class ="Model.Skills" >
-        <property name="name" value = "Android Application Development"></property>
+        <property name="name" value = "${studentSkill.skill2}"></property>
       </bean>
        <bean id = "student_skill3" class ="Model.Skills" >
-        <property name="name" value = "gaming Application Development"></property>
+        <property name="name" value = "${studentSkill.skill3}"></property>
       </bean>
       
       
       
-     <bean id = "teacher" class = "Model.TeacherModel">
+     <bean id = "teacher" class = "Model.TeacherModel" scope = "prototype">
         <property name="first_name" value = "Sunil"></property>
         <property name="last_name" value = "Kumar"></property>
         <property name="email" value = "sunil6@teacher.com"></property>
@@ -43,25 +44,27 @@
         </property>
      </bean>
      
-      <bean id = "teacher_skill1" class ="Model.Skills">
+      <bean id = "teacher_skill1" class ="Model.Skills" scope = "prototype">
         <property name="name" value = "accountant"></property>
       </bean>
       
-      <bean id = "teacher_skill2" class ="Model.Skills" >
+      <bean id = "teacher_skill2" class ="Model.Skills" scope = "prototype" >
         <property name="name" value = "Teaching"></property>
       </bean>
-       <bean id = "teacher_skill3" class ="Model.Skills" >
+       <bean id = "teacher_skill3" class ="Model.Skills" scope = "prototype">
         <property name="name" value = "Mathematics"></property>
       </bean>
       
       
      <bean id = "controller_dependency" abstract = "true">
-         <property name="person" ref="student"/> <!-- send ref of student and teacher no need to change in code  new Tecaher or new Student() -->
+         <property name="person" ref="teacher"/> <!-- send ref of student and teacher no need to change in code  new Tecaher or new Student() -->
      </bean>
      
      
      <bean id = "person_controller" class = "Controller.PersonController"  parent = "controller_dependency">
      </bean>
-     
-      
+     <bean class="Controller.MyBeanPostProcessor"></bean>
+     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name = "location" value = "xml_configuration/config.properties"></property>
+     </bean>
  </beans>

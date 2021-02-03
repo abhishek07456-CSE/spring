@@ -1,6 +1,7 @@
 package Model;
 
-public class Skills {
+
+public class Skills{
 	   String name;
        public String getName() {
 		return name;
