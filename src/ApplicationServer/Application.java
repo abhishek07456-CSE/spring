@@ -8,7 +8,6 @@ import Controller.PersonController;
 public class Application {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		@SuppressWarnings("resource")
 		AbstractApplicationContext beanFactory = new ClassPathXmlApplicationContext("xml_configuration/employee_spring_bean_container.xml");
 		beanFactory.registerShutdownHook();
