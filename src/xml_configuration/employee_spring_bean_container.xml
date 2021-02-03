@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
-        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
-  
-<!-- <beans default-init-method = "init" default-destroy-method = "destroy"> -->
- <beans>
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
      <bean id = "student" class = "Model.StudentModel">
         <property name="first_name" value = "Abhishek"></property>
         <property name="last_name" value = "Chaudhary"></property>
@@ -30,7 +35,7 @@
       
       
       
-     <bean id = "teacher" class = "Model.TeacherModel" scope = "prototype">
+     <bean id = "teacher" class = "Model.TeacherModel">
         <property name="first_name" value = "Sunil"></property>
         <property name="last_name" value = "Kumar"></property>
         <property name="email" value = "sunil6@teacher.com"></property>
@@ -56,8 +61,8 @@
       </bean>
       
       
-     <bean id = "controller_dependency" abstract = "true">
-         <property name="person" ref="teacher"/> <!-- send ref of student and teacher no need to change in code  new Tecaher or new Student() -->
+     <bean id = "controller_dependency" abstract = "true" >
+       <!-- <property name="person" ref="teacher"/>   --> <!-- send ref of student and teacher no need to change in code  new Tecaher or new Student() -->
      </bean>
      
      

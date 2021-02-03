@@ -1,12 +1,17 @@
 package Controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import Model.Skills;
 import Prototype.Person;
 
 public class PersonController {
+		@Autowired
+		@Qualifier("student")
 	    private Person person; // or student and teacher;
-
+	    
 		public void setPerson(Person person) {
 			this.person = person;
 		}
