@@ -72,4 +72,5 @@
      <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name = "location" value = "xml_configuration/config.properties"></property>
      </bean>
+     <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
  </beans>
